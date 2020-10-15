@@ -22,3 +22,10 @@ class MongoHandler(object):
         except Exception as ex:
             logger.error(ex)
             return {"Request": "Error"}
+
+    def get_by_mongo_users(self):
+        result = []
+        for doc in self.collection_users({}):
+            result.append(doc)
+
+        return result
