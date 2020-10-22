@@ -1,15 +1,24 @@
+from datetime import datetime
+
 from werkzeug.security import generate_password_hash
 
-from .db_utils import MongoHandler
+from .db_utils import PostgreHandler
 
 
 class Users(object):
     def __init__(self):
-        self.m_handler = MongoHandler()
+        self.m_handler = PostgreHandler()
 
-    def create_user(self, login, password):
+    def create_user(self, login, password, fname, lname, date_of_birth):
         password_hash = generate_password_hash(password)
-        user_data = {"User_login": login, "User_password": password_hash}
-        result = self.m_handler.insert_to_mongo(user_data)
+        date_create = str(datetime.now())
+        user_data = {
+            "login": login,
+            "password": password_hash,
+            "fname": fname,
+            "lname": lname,
+            "date_of_birth": date_of_birth,
+            "date_create": date_create,
+        }
 
-        return result
+        return

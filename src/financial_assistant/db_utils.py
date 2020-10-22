@@ -9,7 +9,7 @@ from .utils import parse_args
 postgre_login, postgre_password, host, dbname = parse_args()
 
 
-class MongoHandler(object):
+class PostgreHandler(object):
     def __init__(self):
         while True:
             try:
