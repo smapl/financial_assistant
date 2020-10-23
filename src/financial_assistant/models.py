@@ -6,8 +6,8 @@ from .db_utils import PostgreHandler
 
 
 class Users(object):
-    def __init__(self):
-        self.m_handler = PostgreHandler()
+    def __init__(self, connect):
+        self.connect = connect
 
     def create_user(self, login, password, fname, lname, date_of_birth):
         password_hash = generate_password_hash(password)
@@ -20,5 +20,7 @@ class Users(object):
             "date_of_birth": date_of_birth,
             "date_create": date_create,
         }
+        hand = PostgreHandler(self.connect)
+        result = hand.create_user(user_data)
 
-        return
+        return result

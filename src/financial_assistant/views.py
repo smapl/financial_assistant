@@ -2,20 +2,28 @@ from flask import request
 
 from .create_app import create_app
 from .models import Users
+from .db_utils import PostgreConnect
 
 app = create_app()
-user = Users()
+
+inside_data = PostgreConnect()
+connect = inside_data.output()
+
+user = Users(connect)
 
 
 @app.route("/", methods=["GET", "POST"])
 def create_user():
     login = request.json.get("login")
     password = request.json.get("password")
+    fname = request.json.get("fname")
+    lname = request.json.get("lname")
+    date_of_birth = request.json.get("date_of_birth")
 
     if request.method == "POST":
-        result = user.create_user(login, password)
+        result = user.create_user(login, password, fname, lname, date_of_birth)
 
-        return {"result": result}
+        return {"Response": result}
 
     else:
         return "This is Get request"
