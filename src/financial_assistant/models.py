@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from werkzeug.security import generate_password_hash, check_password_hash
+from loguru import logger
 
 from .db_utils import PostgreHandler
 
@@ -29,8 +30,11 @@ class Users(object):
         hand = PostgreHandler(self.connect)
         password_from_db = hand.check_user(login)
 
-        if password_from_db != False:
-            check_pass = check_password_hash(password_from_db, password)
+        if password_from_db["result"]:
+
+            check_pass = check_password_hash(password_from_db["result"], password)
+            logger.info(check_pass)
+
             if check_pass == True:
                 return {"result": True}
             else:

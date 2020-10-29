@@ -1,6 +1,6 @@
 from flask import request
-from flask_cors import CORS
-
+from flask_cors import CORS, cross_origin
+from loguru import logger
 from .create_app import create_app
 from .models import Users
 from .db_utils import PostgreConnect
@@ -14,8 +14,9 @@ user = Users(connect)
 
 
 @app.route("/registration", methods=["POST"])
+@cross_origin()
 def create_user():
-
+    print(request.data)
     login = request.json.get("login")
     password = request.json.get("password")
     fname = request.json.get("fname")
@@ -31,12 +32,12 @@ def create_user():
         return "This is Get request"
 
 
-@app.route("/login", methods=["GET"])
+@app.route("/login", methods=["POST"])
+@cross_origin()
 def check_user():
     print(request.data)
-    if request.method == "GET":
-        login = request.get_json("login")
-        password = request.get_json("password")
-
+    if request.method == "POST":
+        login = request.json.get("login")
+        password = request.json.get("password")
         db_res = user.check_user(login, password)
         return db_res

@@ -72,11 +72,14 @@ class PostgreHandler(object):
                                 WHERE login = '{login}'
                             """
             )
-            user_data = cursor.fetchall()[0][0]
-            print(user_data)
-            if user_data != None:
-                return {"result": user_data}
+            user_data = cursor.fetchall()
+            logger.info(user_data)
+            logger.info(len(user_data))
+            if len(user_data) != 0:
+                user_data = user_data[0][0]
+                return {"result": str(user_data)}
             else:
+                logger.info(user_data)
                 return {"result": False}
 
         except Exception as ex:
