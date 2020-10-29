@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from .db_utils import PostgreHandler
 
@@ -24,3 +24,17 @@ class Users(object):
         result = hand.create_user(user_data)
 
         return result
+
+    def check_user(self, login, password):
+        hand = PostgreHandler(self.connect)
+        password_from_db = hand.check_user(login)
+
+        if password_from_db != False:
+            check_pass = check_password_hash(password_from_db, password)
+            if check_pass == True:
+                return {"result": True}
+            else:
+                return {"result": True}
+
+        else:
+            return {"result": "Not user with so login"}

@@ -61,3 +61,24 @@ class PostgreHandler(object):
         except Exception as ex:
             logger.error(ex)
             return {"result": ex}
+
+    def check_user(self, login):
+        cursor = self.connect.cursor()
+        try:
+            cursor.execute(
+                f"""
+                                SELECT password 
+                                FROM users 
+                                WHERE login = '{login}'
+                            """
+            )
+            user_data = cursor.fetchall()[0][0]
+            print(user_data)
+            if user_data != None:
+                return {"result": user_data}
+            else:
+                return {"result": False}
+
+        except Exception as ex:
+            logger.error(ex)
+            return {"result": False}

@@ -13,7 +13,7 @@ connect = inside_data.output()
 user = Users(connect)
 
 
-@app.route("/autorization", methods=["GET", "POST"])
+@app.route("/registration", methods=["POST"])
 def create_user():
 
     login = request.json.get("login")
@@ -29,3 +29,14 @@ def create_user():
 
     else:
         return "This is Get request"
+
+
+@app.route("/login", methods=["GET"])
+def check_user():
+    print(request.data)
+    if request.method == "GET":
+        login = request.get_json("login")
+        password = request.get_json("password")
+
+        db_res = user.check_user(login, password)
+        return db_res
