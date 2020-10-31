@@ -16,8 +16,8 @@ class Users(object):
         user_data = {
             "login": login,
             "password": password_hash,
-            "fname": fname,
-            "lname": lname,
+            "fname": fname.capitalize(),
+            "lname": lname.capitalize(),
             "date_of_birth": date_of_birth,
             "date_create": date_create,
             "email": email,
@@ -39,7 +39,7 @@ class Users(object):
             if check_pass == True:
                 return {"result": True}
             else:
-                return {"result": True}
+                return {"result": False}
 
         else:
             return {"result": "Not user with so login"}
