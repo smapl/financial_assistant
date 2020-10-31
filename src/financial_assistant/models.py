@@ -10,7 +10,7 @@ class Users(object):
     def __init__(self, connect):
         self.connect = connect
 
-    def create_user(self, login, password, fname, lname, date_of_birth):
+    def create_user(self, login, password, fname, lname, date_of_birth, email):
         password_hash = generate_password_hash(password)
         date_create = str(datetime.now())
         user_data = {
@@ -20,6 +20,7 @@ class Users(object):
             "lname": lname,
             "date_of_birth": date_of_birth,
             "date_create": date_create,
+            "email": email,
         }
         hand = PostgreHandler(self.connect)
         result = hand.create_user(user_data)

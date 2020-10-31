@@ -21,10 +21,11 @@ def create_user():
     password = request.json.get("password")
     fname = request.json.get("fname")
     lname = request.json.get("lname")
+    email = request.json.get("email")
     date_of_birth = str(request.json.get("date_of_birth"))
 
     if request.method == "POST":
-        result = user.create_user(login, password, fname, lname, date_of_birth)
+        result = user.create_user(login, password, fname, lname, date_of_birth, email)
 
         return {"Response": result}
 
