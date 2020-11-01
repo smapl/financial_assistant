@@ -1,6 +1,9 @@
-from flask import request
+from flask import request, render_template
 from flask_cors import CORS, cross_origin
+
 from loguru import logger
+
+
 from .create_app import create_app
 from .models import Users
 from .db_utils import PostgreConnect
@@ -11,6 +14,12 @@ inside_data = PostgreConnect()
 connect = inside_data.output()
 
 user = Users(connect)
+
+
+@app.route("/", methods=["GET"])
+@cross_origin()
+def begin_page():
+    return render_template("index.html")
 
 
 @app.route("/registration", methods=["POST"])
