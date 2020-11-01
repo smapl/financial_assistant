@@ -30,11 +30,8 @@ function login() {
   console.log(data_to_check);
 
   axios.post(log_url, data_to_check).then((response) => {
-    console.log(response.data);
-    console.log(response.status);
-    console.log(response.statusText);
-    console.log(response.headers);
-    console.log(response.config);
-    alert(respone);
+    if (response.data["result"] == true) {
+      window.location.href = "http://0.0.0.0:5000/personality";
+    }
   });
 }
