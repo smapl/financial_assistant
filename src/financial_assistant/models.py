@@ -34,7 +34,6 @@ class Users(object):
         if password_from_db["result"]:
 
             check_pass = check_password_hash(password_from_db["result"], password)
-            logger.info(check_pass)
 
             if check_pass == True:
                 return {"result": True}

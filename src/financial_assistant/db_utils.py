@@ -73,13 +73,10 @@ class PostgreHandler(object):
                             """
             )
             user_data = cursor.fetchall()
-            logger.info(user_data)
-            logger.info(len(user_data))
             if len(user_data) != 0:
                 user_data = user_data[0][0]
                 return {"result": str(user_data)}
             else:
-                logger.info(user_data)
                 return {"result": False}
 
         except Exception as ex:

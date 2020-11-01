@@ -1,4 +1,4 @@
-from flask import request, render_template
+from flask import request, render_template, session, redirect, url_for
 from flask_cors import CORS, cross_origin
 
 from loguru import logger
@@ -16,7 +16,7 @@ connect = inside_data.output()
 user = Users(connect)
 
 
-@app.route("/", methods=["GET"])
+@app.route("/identification", methods=["GET"])
 @cross_origin()
 def begin_page():
     return render_template("index.html")
@@ -24,14 +24,19 @@ def begin_page():
 
 @app.route("/main", methods=["GET"])
 @cross_origin()
-def main_page():
-    return render_template("main_page.html")
+def main():
+    if "user_name" in session:
+        return render_template("main.html")
+    else:
+        return "Not login"
 
 
-@app.route("/registration", methods=["POST"])
+@app.route("/identification/registration", methods=["POST", "GET"])
 @cross_origin()
 def create_user():
-    print(request.data)
+    if request.method == "GET":
+        return "this get resquest (registration)"
+
     login = request.json.get("login")
     password = request.json.get("password")
     fname = request.json.get("fname")
@@ -48,12 +53,22 @@ def create_user():
         return "This is Get request"
 
 
-@app.route("/login", methods=["POST"])
+@app.route("/identification/login", methods=["POST", "GET"])
 @cross_origin()
 def check_user():
-    print(request.data)
+    if request.method == "GET":
+        return "this get resquest (login)"
+
     if request.method == "POST":
         login = request.json.get("login")
         password = request.json.get("password")
         db_res = user.check_user(login, password)
+
+        logger.info(db_res["result"])
+        if db_res["result"]:
+            session["user_name"] = login
+            logger.info(session["user_name"])
+
+            return redirect(url_for("main"))
+
         return db_res

@@ -1,5 +1,5 @@
 function registrtion() {
-  let resg_url = "http://0.0.0.0:5000/registration";
+  let resg_url = "http://0.0.0.0:5000/identification/registration";
 
   let login = document.querySelector(".login").value;
   let password = document.querySelector(".password").value;
@@ -23,18 +23,18 @@ function registrtion() {
 }
 
 function login() {
-  let log_url = "http://0.0.0.0:5000/login";
+  let log_url = "http://0.0.0.0:5000/identification/login";
   let check_login = document.querySelector(".check_login").value;
   let check_password = document.querySelector(".check_password").value;
   let data_to_check = { login: check_login, password: check_password };
   console.log(data_to_check);
 
-  axios.post(log_url, data_to_check).then(function (response) {
+  axios.post(log_url, data_to_check).then((response) => {
     console.log(response.data);
-    if (response.data["result"] == true) {
-      alert("success");
-    } else {
-      alert("error");
-    }
+    console.log(response.status);
+    console.log(response.statusText);
+    console.log(response.headers);
+    console.log(response.config);
+    alert(respone);
   });
 }
