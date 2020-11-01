@@ -1,0 +1,20 @@
+html {
+  margin: 0;
+}
+
+#container {
+  display: flex;
+  justify-content: space-around;
+}
+
+#registration,
+#login {
+  padding: 2%;
+  width: 30%;
+  height: 40%;
+  margin-left: auto;
+  margin-top: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  border: 1px solid black;
+}

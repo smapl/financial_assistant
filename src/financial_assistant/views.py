@@ -22,6 +22,12 @@ def begin_page():
     return render_template("index.html")
 
 
+@app.route("/main", methods=["GET"])
+@cross_origin()
+def main_page():
+    return render_template("main_page.html")
+
+
 @app.route("/registration", methods=["POST"])
 @cross_origin()
 def create_user():
