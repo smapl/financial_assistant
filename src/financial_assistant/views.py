@@ -64,9 +64,14 @@ def check_user():
         password = request.json.get("password")
         db_res = user.check_user(login, password)
 
-        logger.info(db_res["result"])
         if db_res["result"] == True:
             session["user_name"] = login
-            logger.info(session["user_name"])
+            output_data = {
+                "result": True,
+                "redirect_url": "http://0.0.0.0:5000/personality",
+            }
+            logger.info(output_data)
+
+            return output_data
 
         return db_res
