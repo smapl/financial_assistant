@@ -7,11 +7,18 @@ html {
   justify-content: space-around;
 }
 
-#registration,
+#registration {
+  padding: 2%;
+  height: 30%;
+  margin-left: auto;
+  margin-top: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  border: 1px solid black;
+}
 #login {
   padding: 2%;
-  width: 30%;
-  height: 40%;
+  height: 30%;
   margin-left: auto;
   margin-top: auto;
   margin-right: auto;

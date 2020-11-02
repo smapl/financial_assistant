@@ -29,6 +29,7 @@ function login() {
   let data_to_check = { login: check_login, password: check_password };
 
   axios.post(log_url, data_to_check).then(function (response) {
+    console.log(response);
     if (response.data["result"] == true) {
       console.log(response.data["redirect_url"]);
       window.location.href = response.data["redirect_url"];
