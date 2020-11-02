@@ -24,5 +24,6 @@ def page_one():
 def handler():
     print(request.json)
     if request.json.get("module") == True:
-        return "http://0.0.0.0:5000/page_one"
+        outup_data = {"result": True, "redirect_url": "http://0.0.0.0:5000/page_one"}
+        return outup_data
     return "error"
