@@ -28,13 +28,18 @@ function login() {
   let check_password = document.querySelector(".check_password").value;
   let data_to_check = { login: check_login, password: check_password };
 
-  axios.post(log_url, data_to_check).then(function (response) {
-    console.log(response);
-    if (response.data["result"] == true) {
-      console.log(response.data["redirect_url"]);
-      window.location.href = response.data["redirect_url"];
-    } else {
-      console.log(response.data);
-    }
-  });
+  axios
+    .post(log_url, data_to_check)
+    .then(function (response) {
+      console.log(response);
+      if (response.data["result"] == true) {
+        console.log(response.data["redirect_url"]);
+        window.location.href = response.data["redirect_url"];
+      } else {
+        console.log(response.data);
+      }
+    })
+    .finally(function () {
+      console.log("qwe");
+    });
 }

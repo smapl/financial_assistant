@@ -9,7 +9,6 @@
   </head>
 
   <body>
-    <script src="/static/scripts/index.js"></script>
     <div id="container">
       <form method="POST" action="#" id="registration">
         <h3>Registration</h3>
@@ -31,7 +30,7 @@
           date_of_birth
           <input type="date" name="date_of_birth" class="date_of_birth" /><br />
 
-          <button class="user_data" onclick="registrtion()">save</button>
+          <button onclick="registrtion()">save</button>
         </p>
       </form>
 
@@ -43,8 +42,9 @@
           class="check_password"
           autocomplete="on"
         /><br />
-        <button class="check_input_data" onclick="login()">send</button>
+        <button onclick="login()">send</button>
       </form>
+      <script src="/static/scripts/index.js"></script>
     </div>
   </body>
 </html>

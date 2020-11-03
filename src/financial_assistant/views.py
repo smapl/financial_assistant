@@ -67,6 +67,7 @@ def check_user():
         if db_res["result"] == True:
             session["user_name"] = login
             output_data = {
+                "result": True,
                 "redirect_url": "http://0.0.0.0:5000/personality",
             }
             logger.info(output_data)
