@@ -9,10 +9,10 @@
   </head>
 
   <body>
-    <div id="container">
-      <form method="POST" action="#" id="registration">
-        <h3>Registration</h3>
-        <p>
+    <section id="container">
+      <form method="POST" action="#">
+        <div class="block" id="registration">
+          <h3>Registration</h3>
           login
           <input autocomplete="off" type="text" class="login" /><br />
           password
@@ -31,20 +31,22 @@
           <input type="date" name="date_of_birth" class="date_of_birth" /><br />
 
           <button onclick="registrtion()">save</button>
-        </p>
+        </div>
       </form>
 
-      <form action="" id="login" method="GET">
-        <h3>Login</h3>
-        login<input type="text" class="check_login" /> <br />
-        password<input
-          type="password"
-          class="check_password"
-          autocomplete="on"
-        /><br />
-        <button onclick="login()">send</button>
+      <form action="" method="GET">
+        <div class="block" id="login">
+          <h3>Login</h3>
+          login<input type="text" class="check_login" /> <br />
+          password<input
+            type="password"
+            class="check_password"
+            autocomplete="on"
+          /><br />
+          <button onclick="login()">send</button>
+        </div>
       </form>
       <script src="/static/scripts/index.js"></script>
-    </div>
+    </section>
   </body>
 </html>

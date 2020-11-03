@@ -56,6 +56,7 @@ def create_user():
 @app.route("/identification/login", methods=["POST", "GET"])
 @cross_origin()
 def check_user():
+    logger.info(request.data)
     if request.method == "GET":
         return "this get resquest (login)"
 

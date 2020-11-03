@@ -18,6 +18,7 @@ function registrtion() {
   };
   console.log(data_to_server);
   axios.post(resg_url, data_to_server).then(function (response) {
+    s;
     console.log(response.data);
   });
 }
@@ -26,20 +27,27 @@ function login() {
   let log_url = "http://0.0.0.0:5000/identification/login";
   let check_login = document.querySelector(".check_login").value;
   let check_password = document.querySelector(".check_password").value;
-  let data_to_check = { login: check_login, password: check_password };
+  let data_to_check = JSON.stringify({
+    login: check_login,
+    password: check_password,
+  });
 
-  axios
-    .post(log_url, data_to_check)
-    .then(function (response) {
-      console.log(response);
-      if (response.data["result"] == true) {
-        console.log(response.data["redirect_url"]);
-        window.location.href = response.data["redirect_url"];
+  const request = new XMLHttpRequest();
+
+  request.open("POST", log_url);
+  request.setRequestHeader("content-type", "application/json");
+  request.send(data_to_check);
+
+  request.onload = function () {
+    if (request.status == 200) {
+      if (request.response["result"] == true) {
+        window.location.href = request.response["redirect_url"];
       } else {
-        console.log(response.data);
+        console.log(request.response["result"]);
       }
-    })
-    .finally(function () {
-      console.log("qwe");
-    });
+    } else {
+      console.log(request.status);
+    }
+    console.log(request.response);
+  };
 }

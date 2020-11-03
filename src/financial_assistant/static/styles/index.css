@@ -2,26 +2,33 @@ html {
   margin: 0;
 }
 
-#container {
+section {
+  position: relative;
+  overflow: hidden;
   display: flex;
   justify-content: space-around;
+  border: 1px solid black;
+  align-items: center;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5%;
+  padding: 5%;
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
 }
 
 #registration {
-  padding: 2%;
-  height: 30%;
-  margin-left: auto;
-  margin-top: auto;
-  margin-right: auto;
-  margin-bottom: auto;
-  border: 1px solid black;
+  background-color: coral;
 }
 #login {
-  padding: 2%;
-  height: 30%;
-  margin-left: auto;
-  margin-top: auto;
-  margin-right: auto;
-  margin-bottom: auto;
-  border: 1px solid black;
+  background-color: cornflowerblue;
+}
+
+.block {
+  flex: 1 100 px;
 }
