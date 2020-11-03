@@ -4,11 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/static/styles/index.css" />
     <title>Assistant</title>
   </head>
 
   <body>
     <script src="/static/scripts/index.js"></script>
+    <section id="container">
+      <div id="block_1" class="container_block">
+        login<input type="text" autocomplete="on" /><br />
+        password<input type="password" autocomplete="on" /><br />
+        fname<input type="text" autocomplete="on" /><br />
+        lname<input type="text" autocomplete="on" /><br />
+      </div>
+      <div id="block_2" class="container_block">
+        login<input type="text" autocomplete="on" /><br />
+        password<input type="password" autocomplete="on" /><br />
+      </div>
+    </section>
     <button onclick="transport()">go</button>
   </body>
 </html>
