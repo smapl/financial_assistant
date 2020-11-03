@@ -34,11 +34,11 @@ function login() {
 
   const request = new XMLHttpRequest();
 
-  request.open("POST", log_url);
-  request.setRequestHeader("content-type", "application/json");
-  request.send(data_to_check);
-
   request.onload = function () {
+    while (request.readyState != 4) {
+      console.log(request.status);
+    }
+    console.log(request.status);
     if (request.status == 200) {
       if (request.response["result"] == true) {
         window.location.href = request.response["redirect_url"];
@@ -50,4 +50,10 @@ function login() {
     }
     console.log(request.response);
   };
+  request.open("POST", log_url);
+  request.setRequestHeader("content-type", "application/json");
+  request.send(data_to_check);
+  console.log(request.status);
+  console.log(request.responseText);
+  console.log(request.readyState);
 }
