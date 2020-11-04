@@ -10,42 +10,71 @@
 
   <body>
     <section id="container">
-      <form method="POST" action="#">
-        <div class="block" id="registration">
+      <div class="block" id="registration">
+        <form method="POST" action="#">
+        <div class="inside">
           <h3>Registration</h3>
-          login
-          <input autocomplete="off" type="text" class="login" /><br />
-          password
-          <input
-            autocomplete="off"
-            pattern="[A-Za-z0-9]{4,}"
-            type="text"
-            class="password"
-          /><br />
-          fname
-          <input autocomplete="off" type="text" class="fname" /><br />
-          lname
-          <input autocomplete="off" type="text" class="lname" /><br />
-          email <input type="email" class="email" /><br />
-          date_of_birth
-          <input type="date" name="date_of_birth" class="date_of_birth" /><br />
-
+          <div class="inside_item">
+            <div class="lft">login</div>
+            <div class="lft"><input autocomplete="off" type="text" class="login" /><br /></div>
+          </div>
+          <div class="inside_item">
+            <div class="lft">password</div>
+            <div class="lft"><input
+              autocomplete="off"
+              pattern="[A-Za-z0-9]{4,}"
+              type="text"
+              class="password"
+            />
+            <br /></div>
+          </div>
+          <div class="inside_item">
+            <div class="lft">fname</div>
+            <div class="lft"><input autocomplete="off" type="text" class="fname" /><br /></div>
+          </div>
+          <div class="inside_item">
+            <div class="lft">lname</div>
+            <div class="lft"><input autocomplete="off" type="text" class="lname" /><br /></div>
+          </div>
+          <div class="inside_item">
+            <div class="lft">email</div>
+            <div class="lft"><input type="email" class="email" /><br /></div>
+          </div>
+          <div class="inside_item">
+            <div class="lft">date of birth</div>
+            <div class="lft"><input
+              type="date"
+              name="date_of_birth"
+              class="date_of_birth"
+            /><br /></div>
+          </div>
           <button onclick="registrtion()">save</button>
         </div>
-      </form>
+        </form>
+      </div>
 
-      <form action="" method="GET">
-        <div class="block" id="login">
+
+      
+      <div class="block" id="login">
+        <form action="" method="GET"></form>
+        <div class="inside">
           <h3>Login</h3>
-          login<input type="text" class="check_login" /> <br />
-          password<input
-            type="password"
-            class="check_password"
-            autocomplete="on"
-          /><br />
+          <div class="inside_item">
+            <div class="lft">login</div><div class="lft"><input type="text" class="check_login" /> <br /></div>
+          </div>
+          <div class="inside_item">
+            <div class="lft">password</div>
+            <div class="lft"><input
+              type="password"
+              class="check_password"
+              autocomplete="on"
+            /><br /></div>
+          </div>
           <button onclick="login()">send</button>
         </div>
-      </form>
+        </form>
+      </div>
+      
       <script src="/static/scripts/index.js"></script>
     </section>
   </body>
