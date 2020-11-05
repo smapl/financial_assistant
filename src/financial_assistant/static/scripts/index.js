@@ -53,6 +53,6 @@ function login() {
 
 let reg = document.getElementById("reg");
 let log = document.getElementById("log");
-console.log(reg, log);
+
 reg.onclick = registrtion;
 log.onclick = login;
