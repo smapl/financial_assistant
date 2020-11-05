@@ -1,8 +1,8 @@
 html {
+  background-color: #bfbfaa;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   height: 100%;
-  border: 1px solid rebeccapurple;
 }
 
 head,
@@ -15,7 +15,6 @@ section {
   padding: 10%;
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
   align-items: center;
   justify-content: space-around;
 }
@@ -24,19 +23,18 @@ section {
   margin: 1px;
   display: flex;
   justify-content: flex-end;
-  border: 10px solid yellowgreen;
   height: 500px;
   width: 100%;
 }
 
 .inside {
+  background-color: #fdff9c;
   margin: 1px;
   width: 300px;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  border: 1px solid green;
 }
 .inside_item {
   margin: 2%;
@@ -48,7 +46,6 @@ section {
 }
 .lft {
   margin: 2%;
-  border: 1px solid blue;
 }
 
 .head {
@@ -60,6 +57,7 @@ section {
 
 .send_form {
   margin-left: 35%;
+  margin-top: 5%;
 }
 
 button {

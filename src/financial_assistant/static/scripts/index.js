@@ -16,10 +16,25 @@ function registrtion() {
     date_of_birth: date_of_birth,
     email: email,
   };
-  console.log(data_to_server);
-  axios.post(resg_url, data_to_server).then(function (response) {
-    console.log(response.data);
-  });
+  axios
+    .post(resg_url, data_to_server, {
+      headers: { "content-type": "application/json" },
+    })
+    .then((response) => {
+      console.log(response.data);
+      if (response.status == 200) {
+        if (response.data["result"] == true) {
+          alert("User success registration");
+        } else {
+          alert(response.data["result"]);
+        }
+      } else {
+        console.log(response.status);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 function login() {

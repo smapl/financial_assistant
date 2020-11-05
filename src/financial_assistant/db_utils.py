@@ -56,7 +56,7 @@ class PostgreHandler(object):
             """
             )
             self.connect.commit()
-            return {"result": "success"}
+            return {"result": True}
 
         except Exception as ex:
             logger.error(ex)

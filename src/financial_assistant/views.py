@@ -36,7 +36,7 @@ def personality():
 def create_user():
     if request.method == "GET":
         return "this get resquest (registration)"
-
+    logger.info(request.data)
     login = request.json.get("login")
     password = request.json.get("password")
     fname = request.json.get("fname")
@@ -44,13 +44,9 @@ def create_user():
     email = request.json.get("email")
     date_of_birth = str(request.json.get("date_of_birth"))
 
-    if request.method == "POST":
-        result = user.create_user(login, password, fname, lname, date_of_birth, email)
+    result = user.create_user(login, password, fname, lname, date_of_birth, email)
 
-        return {"Response": result}
-
-    else:
-        return "This is Get request"
+    return result
 
 
 @app.route("/identification/login", methods=["POST", "GET"])
