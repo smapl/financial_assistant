@@ -18,7 +18,6 @@ function registrtion() {
   };
   console.log(data_to_server);
   axios.post(resg_url, data_to_server).then(function (response) {
-    s;
     console.log(response.data);
   });
 }
@@ -27,33 +26,36 @@ function login() {
   let log_url = "http://0.0.0.0:5000/identification/login";
   let check_login = document.querySelector(".check_login").value;
   let check_password = document.querySelector(".check_password").value;
-  let data_to_check = JSON.stringify({
+  let data_to_check = {
     login: check_login,
     password: check_password,
-  });
-
-  const request = new XMLHttpRequest();
-
-  request.onload = function () {
-    while (request.readyState != 4) {
-      console.log(request.status);
-    }
-    console.log(request.status);
-    if (request.status == 200) {
-      if (request.response["result"] == true) {
-        window.location.href = request.response["redirect_url"];
-      } else {
-        console.log(request.response["result"]);
-      }
-    } else {
-      console.log(request.status);
-    }
-    console.log(request.response);
   };
-  request.open("POST", log_url);
-  request.setRequestHeader("content-type", "application/json");
-  request.send(data_to_check);
-  console.log(request.status);
-  console.log(request.responseText);
-  console.log(request.readyState);
+
+  let res = send_req(log_url, data_to_check);
+
+  if ((res != false) & (res != undefined)) {
+    if (res["result"] == true) {
+      console.log(res["redirect_url"]);
+      window.location.href = res["redirect_url"];
+    } else {
+      console.log(res["result"]);
+    }
+  } else {
+    console.log(res);
+  }
+}
+
+function send_req(req_url, params) {
+  axios
+    .post(req_url, params, { headers: { "content-type": "application/json" } })
+    .then((response) => {
+      if (response.status == 200) {
+        return response.data;
+      } else {
+        return false;
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
