@@ -1,4 +1,4 @@
-from flask import request, render_template, session, redirect, url_for
+from flask import request, render_template, session, redirect, url_for, jsonify
 from flask_cors import CORS, cross_origin
 
 from loguru import logger
@@ -57,6 +57,8 @@ def create_user():
 @cross_origin()
 def check_user():
     logger.info(request.data)
+    if request.is_json == False:
+        return {"result": "error params type"}
     if request.method == "GET":
         return "this get resquest (login)"
 
@@ -73,6 +75,6 @@ def check_user():
             }
             logger.info(output_data)
 
-            return output_data
+            return jsonify(output_data)
 
-        return db_res
+        return jsonify(db_res)
