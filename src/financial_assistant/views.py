@@ -78,3 +78,10 @@ def check_user():
             return jsonify(output_data)
 
         return jsonify(db_res)
+
+
+@app.route("/personality/indent_user", methods=["GET"])
+@cross_origin()
+def indent_user():
+    logger.info(session["user_name"])
+    return jsonify({"user_name": session["user_name"]})
