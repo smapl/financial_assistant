@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="/static/styles/index.css" />
+    
     <title>Assistent</title>
   </head>
 
   <body>
+    
     <section id="container">
       <div class="block" id="registration">
         <form method="POST" action="#">
@@ -48,7 +50,7 @@
               class="date_of_birth"
             /><br /></div>
           </div>
-          <button onclick="registrtion()">save</button>
+          <button id="reg">save</button>
         </div>
         </form>
       </div>
@@ -70,12 +72,13 @@
               autocomplete="on"
             /><br /></div>
           </div>
-          <button onclick="login()">send</button>
+          <button id="log">send</button>
         </div>
         </form>
       </div>
       
-      <script src="/static/scripts/index.js"></script>
+
     </section>
+    <script src="/static/scripts/index.js"></script>
   </body>
 </html>
