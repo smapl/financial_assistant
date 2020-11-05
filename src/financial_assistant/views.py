@@ -22,13 +22,13 @@ def begin_page():
     return render_template("index.html")
 
 
-@app.route("/personality", methods=["GET"])
+@app.route("/", methods=["GET"])
 @cross_origin()
 def personality():
     if "user_name" in session:
         return render_template("main.html")
     else:
-        return "Not login"
+        return render_template("index.html")
 
 
 @app.route("/identification/registration", methods=["POST", "GET"])
@@ -71,7 +71,7 @@ def check_user():
             session["user_name"] = login
             output_data = {
                 "result": True,
-                "redirect_url": "http://0.0.0.0:5000/personality",
+                "redirect_url": "http://0.0.0.0:5000/",
             }
             logger.info(output_data)
 
