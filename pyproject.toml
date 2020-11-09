@@ -12,6 +12,7 @@ redis = "^3.5.3"
 loguru = "^0.5.3"
 psycopg2-binary = "^2.8.6"
 flask-cors = "^3.0.9"
+flask-migrate = "^2.5.3"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.6.0"
