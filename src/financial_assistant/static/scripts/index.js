@@ -1,4 +1,4 @@
-function registrtion() {
+function registration() {
   let resg_url = "http://0.0.0.0:5000/identification/registration";
 
   let login = document.querySelector(".login").value;
@@ -65,7 +65,3 @@ function login() {
       console.log(error);
     });
 }
-
-document.getElementById("reg").addEventListener("click", registrtion);
-
-document.getElementById("log").addEventListener("click", login);
