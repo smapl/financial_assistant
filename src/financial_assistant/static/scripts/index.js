@@ -66,8 +66,6 @@ function login() {
     });
 }
 
-let reg = document.getElementById("reg");
-let log = document.getElementById("log");
+document.getElementById("reg").addEventListener("click", registrtion);
 
-reg.onclick = registrtion;
-log.onclick = login;
+document.getElementById("log").addEventListener("click", login);

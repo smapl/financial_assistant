@@ -26,7 +26,7 @@ def begin_page():
 @cross_origin()
 def personality():
     if "user_name" in session:
-        return render_template("main.html")
+        return render_template("profile.html")
     else:
         return render_template("index.html")
 
